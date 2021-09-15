@@ -16,6 +16,9 @@ function checkMagazine(magazine, note) {
   return console.log(YES);
 }
 
+
+//Second Method....
+
 function checkMagazine(magazine, note) {
   for (let word in note) {
     // If  word doesn't exist in magazine, return 'No'
