@@ -1,19 +1,22 @@
 function sherlockAndAnagrams(s) {
-  let result = [];
-  let count = 0;
-  for (let i = 0; i < s.length; i++) {
-    for (let j = i + 1; j < s.length + 1; j++) {
-      result.push(s.slice(i, j).split("").sort().join(""));
+  let array = [];
+  let numOfPairCount = 0;
+  //"a b b a"
+  //Get all combinations of substrings
+  //['a', 'ab', 'abb', 'abba'....]
+  for (let start = 0; start < s.length; start++) {
+    for (let end = start + 1; end < s.length + 1; end++) {
+      array.push(s.slice(start, end).split("").sort().join(""));
     }
-  } //--> ['a', 'ab', 'abb', 'aabb', 'b', 'bb', 'abb', 'b', 'ab', 'a']
+  } //['a', 'ab', 'abb', 'abba'....., "n - 1" "n"]
 
-  
-  for (let i = 0; i < result.length - 1; i++) {
-    for (let j = i + 1; j < result.length; j++) {
-      if (result[i] == result[j]) count++;
+  for (let brian = 0; brian < array.length - 1; brian++) {
+    for (let micheal = brian + 1; micheal < array.length; micheal++) {
+      if (array[brian] === array[micheal]) {
+        numOfPairCount++;
+      }
     }
   }
-  return count;
-}
 
-console.log(sherlockAndAnagrams("abba"));
+  return numOfPairCount;
+}
