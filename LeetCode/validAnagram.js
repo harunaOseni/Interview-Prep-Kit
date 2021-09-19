@@ -13,8 +13,8 @@
 // Output: false
 
 var validAnagram = function(s,t){
-    let sString = s.split("").sort(); 
-    let tString = s.split("").sort();
+    let sString = s.split("").sort().join();
+    let tString = s.split("").sort().join();
 
     if(tString.length > sString.length){
         return false;
