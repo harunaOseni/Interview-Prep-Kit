@@ -4,8 +4,7 @@
 
 // Return the sum of all odd-length subarrays of arr.
 
- 
-// Sum Of all off length of a subarray 
+// Sum Of all off length of a subarray
 // Example 1:
 
 // Input: arr = [1,4,2,5,3]
@@ -30,17 +29,16 @@
 
 // Input: arr = [10,11,12]
 // Output: 66
-//sum of all length in subarrays(formula) = ((i + 1) * (n - 1) + 1) / 2) * arr[i]
+//sum of all length in subarrays(formula) = ParseInt((i + 1) * (n - i) + 1) / 2) * arr[i]
 
-var sumOddLengthSubarrays = function(array){
-    let n = array.length; 
-    let accumulator = 0; 
+var sumOddLengthSubarrays = function (array) {
+  let n = array.length;
+  let accumulator = 0;
 
-    for(let i = 0; i < array.length; i++){
-        accumulator += (((i + 1) * (n - 1)+ 1) / 2) * array[i]
-    }
-    return accumulator;
-}
+  for (let i = 0; i < array.length; i++) {
+    accumulator += parseInt(((i + 1) * (n - i) + 1) / 2) * array[i];
+  }
+  return accumulator;
+};
 
-
-// i + 1 x n - 1 + 1 / 2 * arrvcurrentValueAtIndex;
+// i + 1 x n - i + 1 / 2 * arrvcurrentValueAtIndex;
