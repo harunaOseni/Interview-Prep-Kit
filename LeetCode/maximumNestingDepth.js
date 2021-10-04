@@ -51,8 +51,8 @@ var maxDepth = function(s) {
         if(sArray[i] === "("){
             countDepth++; //Increases by one
         } else if(sAarray[i] === ")"){
-            countDepth--; //decrease by one
             maximumDepth = Math.max(maximumDepth, countDepth); //find maximum depth of parentheses in string.
+            countDepth--; //decrease by one
         }
     }
     return maximumDepth;
