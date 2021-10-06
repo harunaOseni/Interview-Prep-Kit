@@ -6,10 +6,7 @@
 
 // The length of a path between two nodes is represented by the number of edges between them.
 
- 
-
 // Example 1:
-
 
 // Input: root = [1,2,3,4,5]
 // Output: 3
@@ -18,20 +15,33 @@
 
 // Input: root = [1,2]
 // Output: 1
- 
 
 // Constraints:
 
 // The number of nodes in the tree is in the range [1, 104].
 // -100 <= Node.val <= 100
 
-var binaryTree = function(root){
-    let diameterOfBinaryTree = 0; 
+var binaryTree = function (root) {
+  let diameterOfBinaryTree = 0;
 
-    if(!root){
-        return 0;
+  if (!root) {
+    return 0;
+  }
+
+  function checkDiameter(root) {
+    if (!root) {
+      return 0;
     }
 
-    checkDiameter(root);
-    return diameterOfBinaryTree;
-}
+    let leftTreeNode = checkDiameter(root.left);
+    let rightTreeNode = checkDiameter(root.right);
+    diameterOfBinaryTree = Math.max(
+      diameterOfBinaryTree,
+      leftTreeNode + rightTreeNode
+    );
+    return 1 + Math.max(leftTreeNode, rightTreeNode);
+  }
+
+  checkDiameter(root);
+  return diameterOfBinaryTree;
+};
