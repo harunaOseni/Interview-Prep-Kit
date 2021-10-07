@@ -77,7 +77,7 @@ var invalidTransactions = function (transactions) {
     let next = i + 1;
     let nextTransaction = transactionInformation[next];
     while (
-      nextTransaction < transactionInformation.length &&
+      next < transactionInformation.length &&
       currentTransaction.time - nextTransaction.time <= 60
     ) {
       if (
