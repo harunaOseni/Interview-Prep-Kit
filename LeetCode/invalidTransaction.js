@@ -34,62 +34,38 @@
  * @param {string[]} transactions
  * @return {string[]}
  */
+
+//Big O of n square.
+
 var invalidTransactions = function (transactions) {
-  // we will be using a set adn an array to solve this problem
+  const lenOfTrans = transactions.length;
+  const isTransactionAdded = Array(lenOfTrans).fill(false);
+  let invalidTransaction = [];
 
-  //first step create  a set and array;
-  let invalidTransactions = new Set();
-  let transactionInformation = [];
+  for (let index = 0; index < lenOfTrans; index++) {
+    const [name, time, amount, city] = transactions[index].split(",");
 
-  //second step
-  //arrange each info into the array in an array format and add an
-  //object in an object containing the original string
-  //using a for loop
-  for (let transaction of transactions) {
-    let [name, time, amount, city] = transaction.split(",");
-    transactionInformation.push({
-      name,
-      time,
-      amount,
-      city,
-      rawString: transaction,
-    });
-  }
-
-  //third step
-  //sort every element according to the time
-  transactionInformation.sort(
-    (peter, prubo) => Number(peter.time) - Number(prubo.time)
-  );
-
-  //fourth step
-  //find out which transactions have prices over a 1000 and add them to the invalid set
-  for (let transactionDict of transactionInformation) {
-    if (transactionDict.amount > 1000) {
-      invalidTransactions.push(transactionDict.rawString);
+    if (!isTransactionAdded[index] && amount > 1000) {
+      invalidTransaction.push(transactions[index]);
+      isTransactionAdded[index] = true;
     }
-  }
 
-  //fifth  steps
-  //find transaction that has the same name and is with a time difference of 60 with another transaction
-  for (let i = 0; i < transactionInformation.length - 1; i++) {
-    let currentTransaction = transactionInformation[i];
-    let next = i + 1;
-    let nextTransaction = transactionInformation[next];
-    while (
-      next < transactionInformation.length &&
-      currentTransaction.time - nextTransaction.time <= 60
-    ) {
-      if (
-        currentTransaction.name === nextTransaction.name &&
-        currentTransaction.city !== nextTransaction.city
-      ) {
-        invalidTransactions.add(currentTransaction.rawString);
-        invalidTransactions.add(nextTransaction.rawString);
+    for (let jedex = index + 1; jedex < lenOfTrans; jedex++) {
+      const [name2, time2, amount2, city2] = transactions[jedex].split(",");
+
+      if (name === name2 && Math.abs(time - time2) <= 60 && city !== city2) {
+        if (!isTransactionAdded[jedex]) {
+          invalidTransaction.push(transactions[jedex]);
+          isTransactionAdded[jedex] = true;
+        }
+
+        if (!isTransactionAdded[index]) {
+            invalidTransaction.push(transactions[index]);
+            isTransactionAdded[index] = true;
+          }
       }
-      next++;
     }
   }
 
-  return Array.from(invalidTransactions);
+  return invalidTransaction;
 };
