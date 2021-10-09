@@ -59,33 +59,12 @@
 
 
 var flatten = function(head) {
-    let stack = []; 
-    let curr = head; 
+  let stack = []; 
+  let curr = head; 
 
-    while(curr){
-        if(curr.child){
-           if(curr.next){
-               stack.push(next);
-               curr.next.prev = null;
-           }
-           curr.next = curr.child;
-           curr.child.prev = curr;
-        }
-
-        if(curr.next){
-            curr = curr.next;
-        } else{
-            break;
-        }
-    }
-
-    while(stack){
-        curr.next = stack.pop();
-        curr.next.prev = curr;
-        while(curr.next){
-            curr = curr.next;
-        }
-    }
-
-    return head;
+  while(curr){
+      if(curr.child){
+          
+      }
+  }
 }
