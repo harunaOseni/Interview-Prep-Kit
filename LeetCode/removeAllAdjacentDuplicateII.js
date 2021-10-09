@@ -6,8 +6,6 @@
 
 // Return the final string after all such duplicate removals have been made. It is guaranteed that the answer is unique.
 
- 
-
 // Example 1:
 
 // Input: s = "abcd", k = 2
@@ -17,7 +15,7 @@
 
 // Input: s = "deeedbbcccbdaa", k = 3
 // Output: "aa"
-// Explanation: 
+// Explanation:
 // First delete "eee" and "ccc", get "ddbbbdaa"
 // Then delete "bbb", get "dddaa"
 // Finally delete "ddd", get "aa"
@@ -25,7 +23,6 @@
 
 // Input: s = "pbbcggttciiippooaais", k = 2
 // Output: "ps"
- 
 
 // Constraints:
 
@@ -33,15 +30,25 @@
 // 2 <= k <= 104
 // s only contains lower case English letters.
 
-var removeDuplicates = function(s, k) {
-    let stack = [];
+var removeDuplicates = function (s, k) {
+  let stack = [];
 
-    for(let character of s){
-        if(stack.length && stack[stack.length - 1][0] === character){
-            stack[stack.length - 1][1] + 1; 
-            if(){
-                
-            }
-        }
+  for (let character of s) {
+    if (stack.length && stack[stack.length - 1][0] === character) {
+      stack[stack.length - 1][1] += 1;
+      if (stack[stack.length - 1][0] === k) {
+        stack.pop();
+      }
+    } else {
+      stack.push([character, 1]);
     }
-}
+  }
+
+  let result = ""; 
+
+  for(let [character, count] of stack){
+      result += character.repeat(count);
+  }
+
+  return result;
+};
