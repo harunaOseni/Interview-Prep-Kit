@@ -68,9 +68,11 @@ var flatten = function(head) {
           curr.next = curr.child;
           curr.next.prev = curr;
           curr.child = null;
-      } else if(){
-
+      } else if(!curr.next && stack.length !== 0){
+        curr.next = stack.pop(); 
+        curr.next.prev = curr;
       }
+      curr = curr.next;
   }
   return head;
 }
