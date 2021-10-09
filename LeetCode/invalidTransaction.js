@@ -38,34 +38,30 @@
 //Big O of n square.
 
 var invalidTransactions = function (transactions) {
-  const lenOfTrans = transactions.length;
-  const isTransactionAdded = Array(lenOfTrans).fill(false);
-  let invalidTransaction = [];
+    let invalidTransaction = []; 
+    let brianAndMichaelArrayForCheck = Array(transactions.length).fill(false); 
 
-  for (let index = 0; index < lenOfTrans; index++) {
-    const [name, time, amount, city] = transactions[index].split(",");
+    for(let index = 0; index < transactions.length; index++){
+        const [name, time, amount, city] = transactions[index].split(",");
 
-    if (!isTransactionAdded[index] && amount > 1000) {
-      invalidTransaction.push(transactions[index]);
-      isTransactionAdded[index] = true;
-    }
-
-    for (let jedex = index + 1; jedex < lenOfTrans; jedex++) {
-      const [name2, time2, amount2, city2] = transactions[jedex].split(",");
-
-      if (name === name2 && Math.abs(time - time2) <= 60 && city !== city2) {
-        if (!isTransactionAdded[jedex]) {
-          invalidTransaction.push(transactions[jedex]);
-          isTransactionAdded[jedex] = true;
+        if(!brianAndMichaelArrayForCheck[index] && amount > 1000){
+            invalidTransaction.push(transactions[index]);
+            brianAndMichaelArrayForCheck.push(index);
         }
 
-        if (!isTransactionAdded[index]) {
-            invalidTransaction.push(transactions[index]);
-            isTransactionAdded[index] = true;
-          }
-      }
+        for(let jedex = index + 1; jedex < transactions.length; jedex++){
+            const[name2, time2, amount2, city2] = transactions[jedex].split("");
+            if(name === name2 && time2 - time <= 60 && city2 !== city){
+                if(!invalidTransaction[index]){
+                    invalidTransaction.push(transactions[index]); 
+                    invalidTransaction.push(transactions[jedex]);
+                }
+                if(!brianAndMichaelArrayForCheck[jedex] && !brianAndMichaelArrayForCheck[index]){
+                    brianAndMichaelArrayForCheck.push(jedex); 
+                    brianAndMichaelArrayForCheck.push(index);
+                }
+            }
+        }
     }
-  }
-
-  return invalidTransaction;
+    return invalidTransaction;
 };
