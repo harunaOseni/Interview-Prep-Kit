@@ -64,7 +64,13 @@ var flatten = function(head) {
 
   while(curr){
       if(curr.child){
-          
+          if(curr.next) stack.push(curr.next); 
+          curr.next = curr.child;
+          curr.next.prev = curr;
+          curr.child = null;
+      } else if(){
+
       }
   }
+  return head;
 }
