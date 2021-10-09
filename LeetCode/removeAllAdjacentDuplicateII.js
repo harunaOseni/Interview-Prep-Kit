@@ -34,22 +34,14 @@
 // s only contains lower case English letters.
 
 var removeDuplicates = function(s, k) {
-    let stack = []; 
+    let stack = [];
 
     for(let character of s){
         if(stack.length && stack[stack.length - 1][0] === character){
-            stack[stack.length - 1][1] += 1;
-            if(stack[stack.length - 1][1] ===  3){
-                stack.pop();
+            stack[stack.length - 1][1] + 1; 
+            if(){
+                
             }
-        } else{
-            stack.push([character, 1]);
         }
     }
-    let resultString = "";
-
-    for(let [character, count] of stack){
-        resultString += character.repeat(count);
-    }
-    return resultString;
 }
