@@ -40,8 +40,8 @@ var candyCrush = function (board) {
     }
   }
 
-  //Step3: Gravity
-  //Moving candys down after crushing
+  // Step3: Gravity
+  //     Moving candys down after crushing
   for (let index = 0; index < board[0].length; index++) {
     let gravityIndex = board.length - 1;
     for (let revex = board.length - 1; revex >= 0; revex--) {
@@ -51,9 +51,7 @@ var candyCrush = function (board) {
       }
     }
     for (let jedex = gravityIndex; jedex >= 0; jedex--) {
-      if (board[gravityIndex][jedex] < 0) {
-        board[gravityIndex][jedex] === 0;
-      }
+      board[jedex][index] = 0;
     }
   }
 
