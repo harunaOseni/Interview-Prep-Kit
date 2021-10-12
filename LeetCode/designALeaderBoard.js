@@ -1,4 +1,4 @@
-// // DESIGN A LEADER BOARD
+// DESIGN A LEADER BOARD
 
 // Design a Leaderboard class, which has 3 functions:
 
@@ -38,3 +38,59 @@
 // 1 <= score <= 100
 // There will be at most 1000 function calls.
 
+var UndergroundSystem = function() {
+    this.checkIns = new Map(); 
+    this.averageTimes = new Map();
+}
+
+/** 
+ * @param {number} id 
+ * @param {string} stationName 
+ * @param {number} t
+ * @return {void}
+ */
+
+
+ UndergroundSystem.prototype.checkIn = function(id, stationName, t) {
+     this.checkIns.add(id, {time: t, stationName});
+ } 
+
+
+ /** 
+ * @param {number} id 
+ * @param {string} stationName 
+ * @param {number} t
+ * @return {void}
+ */
+UndergroundSystem.prototype.checkOut = function(id, stationName, t) {
+    const checkIns = this.checkIns.get(id); 
+    const averageTime = this.averageTimes;
+    const key = `${checkIns.stationName} - ${stationName}`;
+    
+     if(averageTime.has(key)){
+        averageTime.get(key)).set(key, {
+            timeTaken: averageTime.get(key).timeTaken + t - checkIns.time,
+            count: averageTime.get(key).count + 1
+        })
+       
+       } else{
+           averageTime.set(key, {
+               timeTaken: t - checkIns.time, 
+               count: 1
+           })
+       }
+    
+}
+
+
+/** 
+ * @param {string} startStation 
+ * @param {string} endStation
+ * @return {number}
+ */
+ UndergroundSystem.prototype.getAverageTime = function(startStation, endStation) {
+     const key = `${startStation} - ${endStation}`;
+     let value = this.averageTimes.get(key); 
+     let result = value.timeTaken / value.count;
+     return result;
+ }
