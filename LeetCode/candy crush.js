@@ -50,3 +50,4 @@ var candyCrush = function (board) {
   }
   return recurse ? candyCrush(board) : board;
 };
+
