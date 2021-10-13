@@ -38,59 +38,53 @@
 // 1 <= score <= 100
 // There will be at most 1000 function calls.
 
-var UndergroundSystem = function() {
-    this.checkIns = new Map(); 
-    this.averageTimes = new Map();
-}
+vvar Leaderboard = function() {
+    this.map = new Map();
+};
 
 /** 
- * @param {number} id 
- * @param {string} stationName 
- * @param {number} t
+ * @param {number} playerId 
+ * @param {number} score
  * @return {void}
  */
-
-
- UndergroundSystem.prototype.checkIn = function(id, stationName, t) {
-     this.checkIns.add(id, {time: t, stationName});
- } 
-
-
- /** 
- * @param {number} id 
- * @param {string} stationName 
- * @param {number} t
- * @return {void}
- */
-UndergroundSystem.prototype.checkOut = function(id, stationName, t) {
-    const checkIns = this.checkIns.get(id); 
-    const averageTime = this.averageTimes;
-    const key = `${checkIns.stationName} - ${stationName}`;
+Leaderboard.prototype.addScore = function(playerId, score) {
+    if (this.map.has(playerId)) {
+        const val = this.map.get(playerId);
+        score += val;
+    } 
     
-     if(averageTime.has(key)){
-        averageTime.get(key)).set(key, {
-            timeTaken: averageTime.get(key).timeTaken + t - checkIns.time,
-            count: averageTime.get(key).count + 1
-        })
-       
-       } else{
-           averageTime.set(key, {
-               timeTaken: t - checkIns.time, 
-               count: 1
-           })
-       }
-    
-}
-
+    this.map.set(playerId, score);
+};
 
 /** 
- * @param {string} startStation 
- * @param {string} endStation
+ * @param {number} K
  * @return {number}
  */
- UndergroundSystem.prototype.getAverageTime = function(startStation, endStation) {
-     const key = `${startStation} - ${endStation}`;
-     let value = this.averageTimes.get(key); 
-     let result = value.timeTaken / value.count;
-     return result;
- }
+Leaderboard.prototype.top = function(K) {
+    let arr = Array.from(this.map.values()).sort((a,b)=>b-a);
+    
+    let sumOfKPlayers = 0; 
+    let index = 0; 
+    
+    while(K !== 0){
+        sumOfKPlayers += arr[index];
+        index++;
+        K--;
+          }
+    return sumOfKPlayers;
+};
+
+/** 
+ * @param {number} playerId
+ * @return {void}
+ */
+Leaderboard.prototype.reset = function(playerId) {
+    this.map.delete(playerId);
+};
+
+/** 
+ * Your Leaderboard object will be instantiated and called as such:
+ * var obj = new Leaderboard()
+ * obj.addScore(playerId,score)
+ * var param_2 = obj.top(K)
+ * obj.reset(playerId)
