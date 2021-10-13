@@ -38,7 +38,7 @@
 // 1 <= score <= 100
 // There will be at most 1000 function calls.
 
-vvar Leaderboard = function() {
+var Leaderboard = function() {
     this.map = new Map();
 };
 
