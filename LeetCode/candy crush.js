@@ -1,64 +1,52 @@
-// Solution1 ---> wrong on console but right on logic (great for interview explanation)
-/**
- * @param {number[][]} board
- * @return {number[][]}
- */
+//Works like a magic on console.
 var candyCrush = function (board) {
-  let stable = true;
-  //Error Checking
-  if (!board) {
-    return board;
-  }
-
-  //Step1: Crush Row
-  for (let index = 0; index < board.length; index++) {
-    for (let jedex = 0; jedex < board[index].length; jedex++) {
-      let num1 = Math.abs(board[index][jedex]);
-      let num2 = Math.abs(board[index][jedex + 1]);
-      let num3 = Math.abs(board[index][jedex + 2]);
-      if (num1 === num2 && num2 === num3 && num1 !== 0) {
-        board[index][jedex] = -num1;
-        board[index][jedex + 1] = -num2;
-        board[index][jedex + 2] = -num3;
-        stable = false;
+  let r = board.length;
+  let c = board[0].length;
+  let recurse = false;
+  for (let i = 0; i < r; i++) {
+    for (let j = 0; j < c; j++) {
+      if (j + 2 < c) {
+        if (
+          Math.abs(board[i][j]) === Math.abs(board[i][j + 1]) &&
+          Math.abs(board[i][j]) === Math.abs(board[i][j + 2]) &&
+          Math.abs(board[i][j]) !== 0
+        ) {
+          board[i][j] =
+            board[i][j + 1] =
+            board[i][j + 2] =
+              board[i][j] < 0 ? board[i][j] : -1 * board[i][j];
+          recurse = true;
+        }
+      }
+      if (i + 2 < r) {
+        if (
+          Math.abs(board[i][j]) === Math.abs(board[i + 1][j]) &&
+          Math.abs(board[i + 2][j]) === Math.abs(board[i][j]) &&
+          Math.abs(board[i][j]) !== 0
+        ) {
+          board[i][j] =
+            board[i + 1][j] =
+            board[i + 2][j] =
+              board[i][j] < 0 ? board[i][j] : -1 * board[i][j];
+          recurse = true;
+        }
       }
     }
   }
 
-  //Steps2: Crush Column
-  for (let index = 0; index < board[0].length; index++) {
-    for (let jedex = 0; jedex < board.length - 2; jedex++) {
-      let num1 = Math.abs(board[index][jedex]);
-      let num2 = Math.abs(board[index + 1][jedex]);
-      let num3 = Math.abs(board[index + 2][jedex]);
-      if (num1 === num2 && num2 === num3 && num1 !== 0) {
-        board[index][jedex] = -num1;
-        board[index + 1][jedex] = -num2;
-        board[index + 2][jedex] = -num3;
-        stable = false;
+  for (let i = 0; i < r; i++) {
+    for (let j = 0; j < c; j++) {
+      if (board[i][j] < 0) {
+        board[i][j] = 0;
+        let newI = i - 1;
+        while (newI >= 0 && board[newI][j] !== 0) {
+          let temp = board[newI][j];
+          board[newI][j] = board[newI + 1][j];
+          board[newI + 1][j] = temp;
+          newI--;
+        }
       }
     }
   }
-
-  // Step3: Gravity
-  //     Moving candys down after crushing
-  for (let index = 0; index < board[0].length; index++) {
-    let gravityIndex = board.length - 1;
-    for (let revex = board.length - 1; revex >= 0; revex--) {
-      if (board[revex][index] > 0) {
-        board[gravityIndex][index] = board[revex][index];
-        gravityIndex--;
-      }
-    }
-    for (let jedex = gravityIndex; jedex >= 0; jedex--) {
-      board[jedex][index] = 0;
-    }
-  }
-
-  //Step4: return stable board
-  if (stable) {
-    return board;
-  } else {
-    return candyCrush(board);
-  }
+  return recurse ? candyCrush(board) : board;
 };
