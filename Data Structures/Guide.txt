@@ -19,5 +19,15 @@ Dunder Methods and overriding basic objects (Done)
 
 Stacks and Queues (Include reading priority queues, circular queues/lists) (Done)
 
+Priority Queues (Done)
+    # Priority Queues are simply the queue data structure with a priority
+    # for example: In a normal queue data structure, which works on the FIFO methodology (First In First Out),
+    # the first item to be added to the queue is the first item to be removed and so on and so forth.
+    # while in the priority queue data structure, which is very synontnous to a hospital setting, 
+    # as regardless of order of patients, the critical patient are to be attended to first and immediately
+    # i.e the patient with the highest priority is to be attended to first, that is simply what priority queues are. 
+    # ---> a youtube video explaining this better (https://youtu.be/wRvOzgt2ygs)
+
+Circular Queues
 
 Linked Lists (Singly and Doubly Linked Lists) (Done)
