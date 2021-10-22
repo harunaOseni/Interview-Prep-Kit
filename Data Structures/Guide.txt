@@ -18,16 +18,18 @@ Dunder Methods and overriding basic objects (Done)
     To understand more about dunder methods and overiding them visit: https://www.journaldev.com/22460/python-str-repr-functions
 
 Stacks and Queues (Include reading priority queues, circular queues/lists) (Done)
+    Priority Queues (Done)
+        # Priority Queues are simply the queue data structure with a priority
+        # for example: In a normal queue data structure, which works on the FIFO methodology (First In First Out),
+        # the first item to be added to the queue is the first item to be removed and so on and so forth.
+        # while in the priority queue data structure, which is very synontnous to a hospital setting, 
+        # as regardless of order of patients, the critical patient are to be attended to first and immediately
+        # i.e the patient with the highest priority is to be attended to first, that is simply what priority queues are. 
+        # ---> a youtube video explaining this better (https://youtu.be/wRvOzgt2ygs)
 
-Priority Queues (Done)
-    # Priority Queues are simply the queue data structure with a priority
-    # for example: In a normal queue data structure, which works on the FIFO methodology (First In First Out),
-    # the first item to be added to the queue is the first item to be removed and so on and so forth.
-    # while in the priority queue data structure, which is very synontnous to a hospital setting, 
-    # as regardless of order of patients, the critical patient are to be attended to first and immediately
-    # i.e the patient with the highest priority is to be attended to first, that is simply what priority queues are. 
-    # ---> a youtube video explaining this better (https://youtu.be/wRvOzgt2ygs)
-
-Circular Queues
+    Circular Queues (Done)
+        # Circular Queue works by the process of circular increment i.e. when we try to increment the pointer and we reach the end of the queue, 
+        we start from the beginning of the queue, where the circular increment is performed by modulo division with the queue size.
+        # Here's an article that explains it better (https://www.programiz.com/dsa/circular-queue)
 
 Linked Lists (Singly and Doubly Linked Lists) (Done)
