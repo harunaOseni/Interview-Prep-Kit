@@ -1,0 +1,23 @@
+Portions covered are:
+
+Big - O Notations (Done)
+---> a link to understand big O notation more clearly 
+---> https://www.youtube.com/watch?v=5yJ_QLec0Lc
+---> https://www.youtube.com/watch?v=D6xkbGLQesk
+
+Searching and Sorting (Done)
+---> Understand the time complexity of searching and sorting algorithms
+---> cheat sheet for Big O notation (https://www.bigocheatsheet.com/)
+
+Dunder Methods and overriding basic objects (Done)
+    --> Dunder methods are methods that are automatically created for an object, i.e inbuilt methods for an object.
+    --> __init__ is a special method that is automatically called when an object is created.
+    --> __str__ is a special method that is automatically called when an object is printed.
+    --> __repr__ is a special method that is automatically called when an object is printed.
+    --> __del__ is a special method that is automatically called when an object is deleted.
+    To understand more about dunder methods and overiding them visit: https://www.journaldev.com/22460/python-str-repr-functions
+
+Stacks and Queues (Include reading priority queues, circular queues/lists) (Done)
+
+
+Linked Lists (Singly and Doubly Linked Lists) (Done)
