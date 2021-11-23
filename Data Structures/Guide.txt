@@ -33,3 +33,6 @@ Stacks and Queues (Include reading priority queues, circular queues/lists) (Done
         # Here's an article that explains it better (https://www.programiz.com/dsa/circular-queue)
 
 Linked Lists (Singly and Doubly Linked Lists) (Done)
+
+Trees (Done)
+
