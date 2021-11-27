@@ -4,7 +4,6 @@
 
 // A subarray is a contiguous part of an array.
 
-
 // Example 1:
 
 // Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
@@ -23,3 +22,20 @@
 
 // 1 <= nums.length <= 105
 // -104 <= nums[i] <= 104
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSubArray = function (nums) {
+  //using Kadane's algorithm
+  let maximumSum = nums[0];
+
+  for (let index = 1; index < nums.length; index++) {
+    if (nums[index - 1] > 0) {
+      nums[index] += nums[index - 1];
+    }
+    maximumSum = Math.max(maximumSum, nums[index]);
+  }
+  return maximumSum;
+};
