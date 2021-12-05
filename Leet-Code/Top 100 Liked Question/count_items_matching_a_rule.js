@@ -9,7 +9,6 @@
 // ruleKey == "name" and ruleValue == namei.
 // Return the number of items that match the given rule.
 
-
 // Example 1:
 
 // Input: items = [["phone","blue","pixel"],["computer","silver","lenovo"],["phone","gold","iphone"]], ruleKey = "color", ruleValue = "silver"
@@ -27,3 +26,35 @@
 // 1 <= typei.length, colori.length, namei.length, ruleValue.length <= 10
 // ruleKey is equal to either "type", "color", or "name".
 // All strings consist only of lowercase letters.
+
+// Time Complexity: O(N)
+// Space Complexity: O(1)
+
+/**
+ * @param {string[][]} items
+ * @param {string} ruleKey
+ * @param {string} ruleValue
+ * @return {number}
+ */
+var countMatches = function (items, ruleKey, ruleValue) {
+  let result = 0;
+
+  for (let i = 0; i < items.length; i++) {
+    // items[i] = [typei, colori, namei]
+    if (ruleKey === "type") {
+      if (items[i][0] === ruleValue) {
+        result++;
+      }
+    } else if (ruleKey === "color") {
+      if (items[i][1] === ruleValue) {
+        result++;
+      }
+    } else {
+      if (items[i][2] === ruleValue) {
+        result++;
+      }
+    }
+  }
+
+  return result;
+};
