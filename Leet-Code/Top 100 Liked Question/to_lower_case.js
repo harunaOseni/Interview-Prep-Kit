@@ -70,3 +70,7 @@ var toLowerCase = function (s) {
 
   return result;
 };
+
+var toLowerCase = function (s) {
+  return s.toLowerCase();
+};
