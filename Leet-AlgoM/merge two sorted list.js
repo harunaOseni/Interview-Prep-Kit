@@ -28,25 +28,49 @@
 // Solution:
 // Time complexity: O(m + n)
 
-var mergeTwoLists = function (list1, list2) {
-  if (!list1) {
-    return list2;
+function ListNode(val, next) {
+  this.val = val === undefined ? 0 : val;
+  this.next = next === undefined ? null : next;
+}
+
+function mergeTwoLists(l1, l2) {
+  if (l1 === null) {
+    return l2;
+  } else if (l2 === null) {
+    return l1;
   }
-
-  if (!list2) {
-    return list1;
-  }
-
-  let listValue1 = list1.val;
-  let listValue2 = list2.val;
-  let mergeSortedList;
-
-  if (listValue1 < listValue2) {
-    mergeSortedList = new ListNode(listValue1);
-    mergeSortedList.next = mergeTwoLists(list1.next, list2);
+  if (l1.val < l2.val) {
+    l1.next = mergeTwoListsRecursive(l1.next, l2);
+    return l1;
   } else {
-    mergeSortedList = new ListNode(listValue2);
-    mergeSortedList.next = mergeTwoLists(list2.next, list1);
+    l2.next = mergeTwoListsRecursive(l1, l2.next);
+    return l2;
   }
-  return mergeSortedList;
+}
+
+// Iterative solution
+var mergeTwoLists = function (list1, list2) {
+  let head = new ListNode();
+  let current = head;
+
+  while (list1 && list2) {
+    if (list1.val < list2.val) {
+      current.next = list1;
+      list1 = list1.next;
+    } else {
+      current.next = list2;
+      list2 = list2.next;
+    }
+    current = current.next;
+  }
+
+  if (list1) {
+    current.next = list1;
+  }
+
+  if (list2) {
+    current.next = list2;
+  }
+
+  return head.next;
 };
