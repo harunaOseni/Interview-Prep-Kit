@@ -25,17 +25,20 @@
 # 1 <= prices.length <= 105
 # 0 <= prices[i] <= 104
 
-class Solution(object):
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
-        buying_price = prices[0]
-        maximum_profit = 0
+def maxProfit(prices):
+    """
+    :type prices: List[int]
+    :rtype: int
+    """
+    buying_price = prices[0]
+    maximum_profit = 0
 
-        for i in range(1, len(prices)):
-            buying_price = min(buying_price, prices[i])
-            maximum_profit = max(prices[i] - buying_price, maximum_profit)
+    for i in range(1, len(prices)):
+        buying_price = min(buying_price, prices[i])
+        selling = prices[i] - buying_price
+        maximum_profit = max(maximum_profit, selling)
 
-        return maximum_profit
+    return maximum_profit
+
+
+print(maxProfit(prices=[7, 1, 5, 3, 6, 4]))

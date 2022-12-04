@@ -58,3 +58,13 @@ class Solution(object):
 
         trav(root)
         return resultTrav
+
+
+# without a helper function recursive
+def inorderTraversal(self, root):
+    res = []
+    if root:
+        res = self.inorderTraversal(root.left)
+        res.append(root.val)
+        res = res + self.inorderTraversal(root.right)
+    return res
