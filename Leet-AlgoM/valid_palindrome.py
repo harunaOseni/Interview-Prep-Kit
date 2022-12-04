@@ -26,6 +26,7 @@
 # 1 <= s.length <= 2 * 105
 # s consists only of printable ASCII characters.
 
+
 def isPalindrome(self, s: str) -> bool:
     s = s.lower()
     s = ''.join([char for char in s if char.isalnum()])
