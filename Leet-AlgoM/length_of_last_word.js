@@ -35,7 +35,17 @@
  * @return {number}
  */
 var lengthOfLastWord = function (s) {
-    s = s.trim();
-    let arr = s.split(" ");
-    return arr[arr.length - 1].length;
+    let length = 0;
+    let i = s.length - 1;
+
+    while (i >= 0 && s[i] === ' ') {
+        i--;
+    }
+
+    while (i >= 0 && s[i] !== ' ') {
+        length++;
+        i--;
+    }
+
+    return length;
 };
