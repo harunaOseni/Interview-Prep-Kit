@@ -45,4 +45,44 @@ def plusOne(digits: list[int]) -> list[int]:
         digits.insert(0, 1)
     return digits
 
+
 print(plusOne(digits=[9]))
+
+# Rewrite for mastery #1
+
+
+def plusOne(digits: list[int]) -> list[int]:
+    carry = 1
+
+    for i in range(len(digits) - 1, -1, -1):
+        digits[i] += carry
+        if digits[i] == 10:
+            carry = 1
+            digits[i] = 0
+        else:
+            carry = 0
+
+    if carry == 1:
+        digits.insert(0, 1)
+
+    return digits
+
+# Rewrite for mastery #2
+
+
+def plusOne(digits: list[int]) -> list[int]:
+    carry = 1
+
+    for i in range(len(digits) - 1, -1, -1):
+        digits[i] += carry
+
+        if digits[i] == 10:
+            carry = 1
+            digits[i] = 0
+        else:
+            carry = 0
+
+    if carry:
+        digits.insert(0, 1)
+
+    return digits
