@@ -71,3 +71,33 @@ class Solution(object):
             j -= 1
 
         return ''.join(result)
+
+# Rewrite for mastery #2:
+
+
+class Solution(object):
+    def addBinary(self, a, b):
+        """
+        :type a: str
+        :type b: str
+        :rtype: str
+        """
+        carry = 0
+        result = []
+        i = len(i) - 1
+        j = len(j) - 1
+
+        while i >= 0 or j >= 0 or carry:
+            digit_a = int(a[i]) if i >= 0 else 0
+            digit_b = int(b[j]) if j >= 0 else 0
+
+            current_sum = digit_a + digit_b + carry
+            carry = current_sum // 2
+            current_digit = current_sum % 2
+
+            result.insert(0, str(current_digit))
+
+            i -= 1
+            j -= 1
+
+        return ''.join()
