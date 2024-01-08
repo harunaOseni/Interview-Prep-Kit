@@ -28,7 +28,7 @@
 var mySqrt = function (x) {
   let left = 0;
   let right = x;
-  let mid = 0;
+  let res = -1;
   while (left <= right) {
     mid = Math.floor((left + right) / 2);
     if (mid * mid === x) {
@@ -37,9 +37,11 @@ var mySqrt = function (x) {
       left = mid + 1;
     } else {
       right = mid - 1;
+      res = mid
     }
   }
-  return right;
+  return res - 1;
 };
 
 // the algorithm above is a binary search algorithm.
+
