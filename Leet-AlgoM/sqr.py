@@ -32,3 +32,22 @@ def square_root(n: int) -> int:
             left = mid + 1
 
     return res - 1
+
+# Rewrite to mastery 1:
+def square_root(n: int) -> int:
+    left = 0
+    right = n
+    res = -1
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if mid * mid == n:
+            return mid
+        elif mid * mid > n:
+            right = mid - 1
+            res = mid
+        else:
+            left = mid + 1
+        
+    return res - 1
