@@ -25,11 +25,16 @@
 // 1 <= n <= 45
 
 var climbStairs = function (n) {
-  let steps = [1, 1, 2, 3];
+  if (n === 1) return 1;
 
-  for (let index = 4; index <= n; index++) {
-    steps[index] = steps[index - 1] + steps[index - 2];
+  let first = 1;
+  let second = 2;
+
+  for (let i = 3; i <= n; i++) {
+    let current = first + second;
+    first = second;
+    second = current;
   }
 
-  return steps[n];
+  return second
 };
