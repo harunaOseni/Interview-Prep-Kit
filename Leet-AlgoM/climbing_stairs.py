@@ -36,3 +36,37 @@ def climbStairs(n):
 
 
 print(climbStairs(3))
+
+# Rewrite for mastery 1:
+
+
+def climbStairs(n):
+    if (n == 1):
+        return 1
+
+    first = 1
+    second = 2
+
+    for i in range(3, n + 1):
+        current = first + second
+        first = second
+        second = current
+
+    return second
+
+# Rewrite for mastery 2:
+
+
+def climbStairs(n):
+    if (n == 1):
+        return 1
+
+    first = 1
+    second = 2
+
+    for i in range(3, n + 1):
+        current = first + second
+        first = second
+        second = current
+
+    return second
