@@ -37,6 +37,34 @@ var generate = function (numRows) {
   return result;
 };
 
+// Rewrite for mastery:
+var generate = function (numRows) {
+  let result = [];
+
+  for (let i = 0; i < numRows; i++) {
+    let rows = [];
+
+    for (let j = 0; j <= i; j++) {
+      if (j === 0 || j === 1) row.push(1);
+      else row.push(result[i - 1][j - 1] + result[i - 1][j]);
+    }
+
+    result.push(row);
+  }
+
+  return result;
+}
+
+var generate = function (numRows) {
+  let result = [];
+
+  for () {
+
+  }
+
+  return result;
+}
+
 /*
 numRows = 1
 [[1]] --> 0
