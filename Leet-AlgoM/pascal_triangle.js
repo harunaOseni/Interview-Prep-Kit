@@ -42,7 +42,7 @@ var generate = function (numRows) {
   let result = [];
 
   for (let i = 0; i < numRows; i++) {
-    let rows = [];
+    let row = [];
 
     for (let j = 0; j <= i; j++) {
       if (j === 0 || j === 1) row.push(1);
@@ -58,8 +58,15 @@ var generate = function (numRows) {
 var generate = function (numRows) {
   let result = [];
 
-  for () {
+  for (let i = 0; i < numRows; i++) {
+      let row = [];
 
+      for (let j = 0; j <= i; j++) {
+          if (j === i || j === 0) row.push(1);
+          else row.push(result[i - 1][j - 1] + result[i - 1][j])
+      }
+
+      result.push(row);
   }
 
   return result;
