@@ -65,3 +65,20 @@ var twoSum = function (nums, target) {
     }
   }
 };
+
+//Solution 3
+
+var twoSum = function (nums, target) {
+  let hashTable = {};
+
+  for (let i = 0; i < nums.length; i++) {
+    let difference = target - nums[i];
+  
+    if (hashTable[difference] !== null) {
+      return [i, hashTable[difference]];
+    }
+    hashTable[nums[i]] = i;
+  }
+
+  return false;
+}
