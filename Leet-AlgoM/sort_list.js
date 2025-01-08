@@ -1,16 +1,17 @@
 function sortList(unsortedList) {
     // WRITE YOUR BRILLIANT CODE HERE
-    let list = [...unsortedList]; 
-    let n = list.length;
+    let list = [...unsortedList];
+    let n = list.length; 
 
     for (let i = 0; i < n - 1; i++) {
-        for (let j = 0; j < n - i - 1; j++) {
+        for (let j = 0; j < n - 1 - i; j++) {
             if (list[j] > list[j + 1]) {
-                [list[j + 1], list[j]] = [list[j], list[j + 1]];
+                [list[j], list[j + 1]] = [list[j + 1], list[j]];
             }
         }
     }
 
+    console.log(list);
     return list;
 }
 
